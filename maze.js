@@ -2,6 +2,8 @@ $(document).ready(function () {
     
 
 let win =true;
+let mazeOut = false;
+let lastWin =false;
 
     $("div.boundary").hover(function() {
 
@@ -11,19 +13,31 @@ let win =true;
     })
 
 
+    $("#maze").mouseleave(function() {
+        if(mazeOut ==true) 
+        {
+            $("#maze >.boundary").addClass("youlose");
+            $("#status")
+            .css({'color' : 'red','visibility' : 'visible'})
+            .text("You lose! :]");
+            
+        }
+    })
+
 
     $("#end").hover(() =>{
 
         if(win){ 
         $("#status")
             .removeClass("style")
-            .css({'background' : 'green','color':'white' ,'visibility' : 'visible'})
+            .css({'color':'green' ,'visibility' : 'visible'})
             .text("You Win! :]");
+            
      }
         else {     
 
             $("#status")
-            .css({'background' : 'red' ,'visibility' : 'visible'})
+            .css({'color' : 'red','visibility' : 'visible'})
             .text("You lose! :]");
 
          }
@@ -32,6 +46,7 @@ let win =true;
     $("#start").click(function(e) {
 
         console.log("sdcad")
+        mazeOut = true;
        $("#maze >.boundary").removeClass("youlose");
        $("#status")
        .css({'visibility' : 'hidden' })
