@@ -3,13 +3,14 @@ $(document).ready(function () {
 
 let win =true;
 let mazeOut = false;
-let lastWin =false;
+let start =false;
 
     $("div.boundary").hover(function() {
-
+        if(start) {
         $("#maze >.boundary").addClass("youlose");
         $("#status").removeAttr("style").text("")
-        win = false;        
+        win = false;
+        }        
     })
 
 
@@ -27,7 +28,8 @@ let lastWin =false;
 
     $("#end").hover(() =>{
 
-        if(win){ 
+        if(start){
+        if(win) { 
         $("#status")
             .removeClass("style")
             .css({'color':'green' ,'visibility' : 'visible'})
@@ -41,12 +43,14 @@ let lastWin =false;
             .text("You lose! :]");
 
          }
+        }
     })
 
     $("#start").click(function(e) {
 
         console.log("sdcad")
         mazeOut = true;
+        start =true;
        $("#maze >.boundary").removeClass("youlose");
        $("#status")
        .css({'visibility' : 'hidden' })
